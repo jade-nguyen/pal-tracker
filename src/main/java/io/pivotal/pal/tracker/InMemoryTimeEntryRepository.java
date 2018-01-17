@@ -24,7 +24,6 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     }
 
     public TimeEntry update(long id, TimeEntry any) {
-        data.remove(id);
         any.setId(id);
         data.put(id, any);
         return any;
