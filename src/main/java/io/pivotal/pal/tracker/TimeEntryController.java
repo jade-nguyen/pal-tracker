@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 @RestController
 @RequestMapping("/time-entries")
@@ -15,14 +16,14 @@ public class TimeEntryController {
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody TimeEntry timeEntry) {
+    public ResponseEntity create(@RequestBody TimeEntry timeEntry) throws SQLException {
 
         ResponseEntity<TimeEntry> responseEntity = new ResponseEntity<TimeEntry>(timeEntryRepository.create(timeEntry), HttpStatus.CREATED);
         return responseEntity;
 
     }
     @GetMapping("/{id}")
-    public ResponseEntity<TimeEntry> read(@PathVariable long id) {
+    public ResponseEntity<TimeEntry> read(@PathVariable long id)  {
         TimeEntry timeEntry = timeEntryRepository.find(id);
         if(timeEntry == null) {
             return new ResponseEntity<TimeEntry>(timeEntry, HttpStatus.NOT_FOUND);
