@@ -82,6 +82,7 @@ jobs:
       path: pal-tracker-artifacts/pal-tracker-*.jar
       environment_variables:
         WELCOME_MESSAGE: "Hello from the review environment"
+        TEST_MESSAGE: "Hello from the review environment"
 
 - name: deploy-production
   plan:
